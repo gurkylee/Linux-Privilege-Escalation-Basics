@@ -462,7 +462,7 @@ find / -perm -u=s -type f 2>/dev/null | xargs ls -l
 find / -perm -g=s -type f 2>/dev/null | xargs ls -l
 find / -perm -4000 -type f -exec ls -la {} 2>/dev/null \;
 find / -uid 0 -perm -4000 -type f 2>/dev/null 
-
+find / \( -perm -u+s -or -perm -g+s  \) -type f -exec ls -l {} \; 2>/dev/null
 // Look for any binaries that seem odd. Any binaries running from a users home directory?
 // Check the version of any odd binaries and see if there are any public expliots that can be used to gain root
 
