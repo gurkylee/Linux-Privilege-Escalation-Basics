@@ -23,6 +23,7 @@ Simple and accurate guide for linux privilege escalation tactics
 - Screen (Attach Session)
 - MySQL Running as root
 - MySQL UDF (User-Defined Functions) Code (UDF) Injection
+- Sudo Injection (Sudo Token)
 
 
 
