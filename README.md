@@ -1,6 +1,3 @@
-# Linux-Privilege-Escalation-Basics
-Simple and accurate guide for linux privilege escalation tactics 
-
 # Privilege Escalation Methods
 
 - Basic System Enumeration
@@ -24,6 +21,7 @@ Simple and accurate guide for linux privilege escalation tactics
 - MySQL Running as root
 - MySQL UDF (User-Defined Functions) Code (UDF) Injection
 - Sudo Injection (Sudo Token)
+- LXD (Container & Alphine Image)
 
 
 
@@ -1191,5 +1189,13 @@ bash exploit_v2.sh
 bash exploit_v3.sh
 sudo su
 ```
+# LXD (Container & Alphine Image)
+Let’s download alphine builder on our local machine, which is a script that provides a way to create Alpine Linux images, so we can mount it using LXD.
+```
+git clone https://github.com/saghul/lxd-alpine-builder.git
 
+cd lxd-alphine-bulder
+
+./build-alphine
+```
 
