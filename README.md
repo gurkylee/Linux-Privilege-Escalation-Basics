@@ -1202,7 +1202,7 @@ python3 -m http.server 8080
 ```
 On the remote machine
 ```
-wget http://ip/alpine-v3.12-x86_64-20200831_0125.tar.gz
+wget http://ip/alpine.tar.gz
 
 //Let’s add the image to lxd using the following command
 lxc image import ./alpine.tar.gz --alias myimage
