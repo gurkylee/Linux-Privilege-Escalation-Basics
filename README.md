@@ -1205,7 +1205,7 @@ On the remote machine
 wget http://ip/alpine-v3.12-x86_64-20200831_0125.tar.gz
 
 //Let’s add the image to lxd using the following command
-lxc image import ./apline-v3.10-x86_64–20191008_1227.tar.gz — alias myimage
+lxc image import ./alpine.tar.gz --alias myimage
 
 //After that we can initialize the image inside a new Linux container. And then mount it the root directory.
 lxc init myimage ignite -c security.privileged=true
