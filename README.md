@@ -307,6 +307,22 @@ pkexec
 ```
 sudo pkexec /bin/bash
 ```
+```
+If user is a member of the sudo group, we can escalate our privileges using pkexec
+pkexec allows an authorized user to execute commands as another user.
+Therefore, we could have used pkexec /bin/bash to spawn a shell as root.
+However, there is known issue that “pkexec fails in a non-graphical environment”
+https://bugs.launchpad.net/ubuntu/+source/policykit-1/+bug/1821415
+To solve this, we needed to create two SSH connections as user drac
+Following was the process:
+Opened two SSH connections as user drac
+On the first session ran – echo $$ 
+On the second session ran – pkttyagent -p {pid}
+Replaced {pid} with the output received for the echo $$ command 
+On the first session, ran – pkexec /bin/bash
+On the second session, entered the password for drac
+All done! Root shell was spawned on the first session.
+```
 
 rlwrap
 ```
