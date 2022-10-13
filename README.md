@@ -510,6 +510,7 @@ find / -uid 0 -perm -4000 -type f 2>/dev/null
 find / \( -perm -u+s -or -perm -g+s  \) -type f -exec ls -l {} \; 2>/dev/null
 find / -group [user] 2>/dev/null
 find / -user xxx
+find / -user <username> -type f 2>&1 | grep -v “Permission” | grep -v “No such”
 
 // Look for any binaries that seem odd. Any binaries running from a users home directory?
 // Check the version of any odd binaries and see if there are any public expliots that can be used to gain root
